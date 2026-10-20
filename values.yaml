@@ -1,0 +1,24 @@
+replicaCount: 1
+
+image:
+  repository: your-dockerhub-username/heart-api
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 8000
+  nodePort: 30080
+
+resources: {}
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: heart-api.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
